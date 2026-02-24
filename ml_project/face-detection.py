@@ -3,14 +3,14 @@ import cv2
 # Need black & white photo
 face_classifier = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
 
-
+# Read image
 group_photo = cv2.imread('group_photo.jpg')
 
 
-# change photo color
+# Change photo color
 gray_photo = cv2.cvtColor(group_photo, cv2.COLOR_BGR2GRAY)
 
-
+# List of coordinates of photo
 faces = face_classifier.detectMultiScale(gray_photo, scaleFactor=1.1, minNeighbors=5, minSize=(30,30))
 
 # Draw rectangles on people faces
@@ -22,7 +22,7 @@ for (x,y,w,h) in faces:
 # show photo in a new window
 #cv2.imshow('Group Photo', group_photo)
 
-# write the change photo to new jpg name
+# Save the changes in photo to new jpg name
 cv2.imwrite('group-photo-copy.jpg', group_photo)
 
 # wait for key pressed
